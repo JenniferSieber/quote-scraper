@@ -38,8 +38,7 @@ def main():
     for current_page in range(1, max_pages + 1):
         quotes_on_page = fetch_quotes(current_page)
         all_quotes.extend(quotes_on_page)
-        # print(f'Current Page: {current_page}')
-
+        
     with open('quotes.json', 'w') as f:
         json.dump(all_quotes, f, indent=2)
     print('Quotes saved to quotes.json file')
