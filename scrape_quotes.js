@@ -11,7 +11,6 @@ const scrape = async () => {
   while (currentPage <= maxPages) {
     const url = `https://quotes.toscrape.com/page/${currentPage}/`;
     await page.goto(url);
-  
     const quotes = await page.evaluate((currentPage) => {
       const quoteElements = document.querySelectorAll('.quote');
       return Array.from(quoteElements).map((element) => {
@@ -35,7 +34,6 @@ const scrape = async () => {
     console.log(`Quotes on page ${currentPage}: `, quotes);
     currentPage++;
   }
-
 
   console.log(`Data saved to quotes.json`)
   fs.writeFileSync('quotes.json', JSON.stringify(allQuotes, null, 2));
